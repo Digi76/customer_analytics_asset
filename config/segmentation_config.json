@@ -1,0 +1,23 @@
+{
+  
+  "model_config" : [{"model":"Decision Tree",
+                 "parameters":{"max_depth":[10,20,30,40,50,60,70,80,90,100],
+                               "min_impurity_decrease":[1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001]},
+                "skip":"Y"},
+                {"model": "Random Forest",
+                 "parameters": {"max_depth":[10, 20, 30, 40, 50],
+                                "n_estimators":[10, 20, 30, 40, 50],
+                                "min_impurity_decrease":[1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001]},
+                "skip":"Y"},
+                {"model": "Naive Bayes",
+                 "parameters": {"var_smoothing":[1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9]}},
+                {"model": "Logistic Regression",
+                 "parameters": {"penalty":["l1","l2"], "C":[1, 0.1, 0.01, 0.001]}},
+                {"model": "Neural Network",
+                 "parameters": {"learning_rate":["constant", "invscaling", "adaptive"]},
+                "skip":"Y"}
+                ]
+  
+  
+  
+}
