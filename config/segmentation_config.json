@@ -14,7 +14,7 @@
                 {"model": "Logistic Regression",
                  "parameters": {"penalty":["l1","l2"], "C":[1, 0.1, 0.01, 0.001]}},
                 {"model": "Neural Network",
-                 "parameters": {"learning_rate":["constant", "invscaling", "adaptive"]},
+                 "parameters": {"hidden_layer_sizes":[[10, 1], [100, 1]],"learning_rate":["constant", "invscaling", "adaptive"]},
                 "skip":"Y"}
                 ]
   
