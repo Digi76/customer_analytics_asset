@@ -1,13 +1,24 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import json
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+cfg_file_nm = "../config/eda_config.json"
+with open(cfg_file_nm, "r") as f:
+    cfg_dict = json.load(f)
 
-def plot_cat_var(explore_col):
-    target_col = 'ACCEPT_INDICATOR'
+file_nm = cfg_dict.get('input_file')
+cat_col_list = cfg_dict.get('categorical_col_list')
+target_col = cfg_dict.get('target_var')
+data_dict = cfg_dict.get('data_dict')
+
+def plot_cat_var(df, explore_col):
+    #target_col = 'ACCEPT_INDICATOR'
 
     rr_overall = 29
 
-    df = pd.read_csv(path + file)
+    #df = pd.read_csv(path + file)
     df_size = df.shape[0]
 
     df_count = df[explore_col].value_counts().reset_index()
@@ -41,17 +52,28 @@ def plot_cat_var(explore_col):
     ax.legend()
     plt.show()
 
+def plot_cont_var(data,col_list):
+    plt.xticks(rotation=90)
+
+    sns.boxplot(x="variable", y="value", data=pd.melt(data[col_list]))
+
+    plt.show()
+
+
 if __name__ == '__main__':
 
-    path = 'C:/project/DG_thesis/'
-    path = 'C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/'
-    file = 'EU_OFFER_PROPENSITY_VIEW_new.csv'
+    col_list = cat_col_list
 
-    col_list = ['EDUCATION_ID', 'LIFESTYLE_CATEGORY_ID']
-
-    col_list = ['EDUCATION_ID', 'LIFESTYLE_CATEGORY_ID', 'FAMILY_CYCLE_ID', 'SOCIAL_CLASS_ID', 'HOUSE_PROPERTY_ID',
-                'AGE_GROUP_ID', 'INCOME_LEVEL_ID', 'BULDING_TYPE_ID', 'BUILDING_VOLUME_LEVEL']
+    df = pd.read_csv(file_nm)
 
     for explore_col in col_list:
-        plot_cat_var(explore_col)
+        plot_cat_var(df,explore_col)
 
+
+    for tbl in data_dict:
+        file_nm = tbl.get("file_nm")
+        cont_col_list = tbl.get("cont_col_list")
+
+        #print(file_nm, col_list)
+        data = pd.read_csv(file_nm)
+        plot_cont_var(data,cont_col_list)

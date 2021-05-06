@@ -1,5 +1,7 @@
 {
-  
+  "input_file" : "C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/DataFiles/cluster_output/Customer_Classification_Data_preprocessed_offer_id.csv",
+  "target_var" : "ACCEPT_INDICATOR",
+  "categorical_variable_list" : ["EDUCATION_ID", "LIFESTYLE_CATEGORY_ID", "FAMILY_CYCLE_ID", "SOCIAL_CLASS_ID","AGE_GROUP_ID", "INCOME_LEVEL_ID"],
   "model_config" : [{"model":"Decision Tree",
                  "parameters":{"max_depth":[10,20,30,40,50,60,70,80,90,100],
                                "min_impurity_decrease":[1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001]},
@@ -14,7 +16,7 @@
                 {"model": "Logistic Regression",
                  "parameters": {"penalty":["l1","l2"], "C":[1, 0.1, 0.01, 0.001]}},
                 {"model": "Neural Network",
-                 "parameters": {"learning_rate":["constant", "invscaling", "adaptive"]},
+                 "parameters": {"hidden_layer_sizes":[[10, 1], [100, 1]],"learning_rate":["constant", "invscaling", "adaptive"]},
                 "skip":"Y"}
                 ]
   

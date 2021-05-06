@@ -1,23 +1,21 @@
 {
   
-  "model_config" : [{"model":"Decision Tree",
-                 "parameters":{"max_depth":[10,20,30,40,50,60,70,80,90,100],
-                               "min_impurity_decrease":[1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001]},
-                "skip":"Y"},
-                {"model": "Random Forest",
-                 "parameters": {"max_depth":[10, 20, 30, 40, 50],
-                                "n_estimators":[10, 20, 30, 40, 50],
-                                "min_impurity_decrease":[1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001]},
-                "skip":"Y"},
-                {"model": "Naive Bayes",
-                 "parameters": {"var_smoothing":[1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9]}},
-                {"model": "Logistic Regression",
-                 "parameters": {"penalty":["l1","l2"], "C":[1, 0.1, 0.01, 0.001]}},
-                {"model": "Neural Network",
-                 "parameters": {"learning_rate":["constant", "invscaling", "adaptive"]},
-                "skip":"Y"}
-                ]
-  
-  
-  
+  "input_file" : "C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/EU_OFFER_PROPENSITY_VIEW_new.csv",
+  "categorical_col_list" : ["EDUCATION_ID", "LIFESTYLE_CATEGORY_ID", "FAMILY_CYCLE_ID", "SOCIAL_CLASS_ID", "HOUSE_PROPERTY_ID",
+                "AGE_GROUP_ID", "INCOME_LEVEL_ID", "BULDING_TYPE_ID", "BUILDING_VOLUME_LEVEL"],
+  "target_var" : "ACCEPT_INDICATOR",
+
+  "data_dict": [{"file_nm" : "C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/DataFiles/CST_BILLING_DETAILS.csv",
+                 "cont_col_list" :  ["CURRENT_RATE_BILL_AMOUNT","CALCULATED_BILL_AMOUNT"],
+                 "excl_col_list" :  ["CST_BILLING_ID","CUSTOMER_ID","RATE_ID","CURRENT_RATE_ID","BILLING_DATE","BILLING_MONTH",
+                   "BILLING_YEAR","BILLING_MONTH_NO"]},
+
+                {"file_nm" : "C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/DataFiles/INTERVAL_USAGE_DAILY.csv",
+                 "cont_col_list" :  ["TOTAL_USAGE","MIN_HOURLY_USAGE","MIN_USAGE_HOUR","MAX_HOURLY_USAGE","MAX_USAGE_HOUR"],
+                 "excl_col_list" :  ["RATE_ID","LOCATION_ID","CUSTOMER_ID","ACCOUNT_ID","SUBSTATION_ID","METER_ID","USAGE_DATE"]},
+
+                {"file_nm" : "C:/Users/DebasishGuha/DG/Personal/MTech/Sem4/Project/work/DataFiles/CST_COMPLAINT.csv",
+                  "cont_col_list" :  ["MEAN_TM_RPR","NBR_AR_UPGR","NBR_CPLN_OPN","NBR_CPLN_CLS"],
+                 "excl_col_list" :  ["CUSTOMER_ID","AGENT_ID"]}
+  ]
 }
